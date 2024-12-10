@@ -1,14 +1,13 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
 app.use(express.static('public'));
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
 // Endpoint to get image filenames from JSON file
 app.get('/images', (req, res) => {
   fs.readFile(path.join(__dirname, 'data/images.json'), 'utf8', (err, data) => {
